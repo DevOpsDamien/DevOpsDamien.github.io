@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Nginx.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="installation-dun-serveur-nginx-comme-reverse-proxy">Installation d'un serveur nginx comme reverse proxy</h1>
+<hr>
+<h2 id="introduction">Introduction</h2>
+<p>Un proxy est utile pour ne pas exposer l'adresse ip publique de la machine et permettre d'avoir un sous-domaine. Il sert de fire-wall et empeche les attaques DDOS.
+Ici, on utilisera un reverse proxy comme nginx qui fera le lien directement entre le serveur web et l'utilisateur. Il permet de répartir les flux(Load Balancing) et de centraliser les connexions.</p>
+<p>Dans cette documentation, on détaillera l'installation de <code>NGINX</code> via un playbook <code>Ansible</code> et la création d'un fichier de configuration.</p>
+<h2 id="installation-de-nginx-gr%C3%A2ce-%C3%A0-ansible">Installation de <code>NGINX</code> grâce à Ansible</h2>
+<p>Le fichier <code>Ansible</code> sera construit comme suit pour l'installation de NGINX avec les configurations nécessaires.</p>
+<pre class="hljs"><code><div><span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">====</span> <span class="hljs-string">Mise</span> <span class="hljs-string">en</span> <span class="hljs-string">place</span> <span class="hljs-string">du</span> <span class="hljs-string">proxy</span> <span class="hljs-string">NGINX</span> <span class="hljs-string">====</span>
+  <span class="hljs-attr">hosts:</span> <span class="hljs-comment"># Groupe définie dans le fichier inventaire.</span>
+  <span class="hljs-attr">become:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">tasks:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">___Installation</span> <span class="hljs-string">du</span> <span class="hljs-string">service</span> <span class="hljs-string">NGINX___</span>
+      <span class="hljs-attr">apt:</span>
+        <span class="hljs-attr">name:</span> <span class="hljs-string">nginx</span>
+        <span class="hljs-attr">state:</span> <span class="hljs-string">present</span>
+        <span class="hljs-attr">update_cache:</span> <span class="hljs-literal">true</span>
+
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">___Arrêt</span> <span class="hljs-string">du</span> <span class="hljs-string">service</span> <span class="hljs-string">NGINX___</span>
+      <span class="hljs-attr">service:</span>
+        <span class="hljs-attr">name:</span> <span class="hljs-string">nginx</span>
+        <span class="hljs-attr">state:</span> <span class="hljs-string">stopped</span>
+        <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span>
+
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">___Copie</span> <span class="hljs-string">des</span> <span class="hljs-string">fichiers</span> <span class="hljs-string">de</span> <span class="hljs-string">configuration___</span>
+      <span class="hljs-attr">copy:</span>
+        <span class="hljs-attr">src:</span> <span class="hljs-string">/home/formation/prometheus/conf.d/&lt;nom_application&gt;.conf</span> <span class="hljs-comment"># Chemin du fichier se trouvant dans la machine local</span>
+        <span class="hljs-attr">dest:</span> <span class="hljs-string">/etc/nginx/sites-available/&lt;nom_application&gt;.conf</span> <span class="hljs-comment"># Chemin du fichier se trouvant dans la machine distante souhaité</span>
+        <span class="hljs-attr">owner:</span> <span class="hljs-string">&lt;nom_utilisateur_machine_distante&gt;</span>
+        <span class="hljs-attr">group:</span> <span class="hljs-string">&lt;nom_groupe_machine_distante&gt;</span>
+        <span class="hljs-attr">mode:</span> <span class="hljs-number">0644</span> <span class="hljs-comment"># Droit du fichier -&gt; 0 pour indique que c'unest un fichier</span>
+                                       <span class="hljs-comment"># 6 Lecture et ecriture pour le propriétaire</span>
+                                       <span class="hljs-comment"># 4 Lecture pour le groupe</span>
+                                       <span class="hljs-comment"># 4 Lecture pour tout le monde</span>
+
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">___Activation</span> <span class="hljs-string">des</span> <span class="hljs-string">fichiers</span> <span class="hljs-string">de</span> <span class="hljs-string">configuration___</span>
+      <span class="hljs-attr">file:</span>
+        <span class="hljs-attr">src:</span> <span class="hljs-string">/etc/nginx/sites-available/&lt;nom_application&gt;.conf</span>
+        <span class="hljs-attr">dest:</span> <span class="hljs-string">/etc/nginx/sites-enabled/&lt;nom_application&gt;.conf</span>
+        <span class="hljs-attr">state:</span> <span class="hljs-string">link</span>
+
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">___Désactivation</span> <span class="hljs-string">de</span> <span class="hljs-string">la</span> <span class="hljs-string">configuration</span> <span class="hljs-string">NGINX</span> <span class="hljs-string">par</span> <span class="hljs-string">défaut</span> <span class="hljs-string">(default.conf)___</span>
+      <span class="hljs-attr">file:</span>
+        <span class="hljs-attr">path:</span> <span class="hljs-string">/etc/nginx/sites-enabled/default</span>
+        <span class="hljs-attr">state:</span> <span class="hljs-string">absent</span>
+
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">___Redemarrage</span> <span class="hljs-string">du</span> <span class="hljs-string">service</span> <span class="hljs-string">NGINX___</span>
+      <span class="hljs-attr">service:</span>
+        <span class="hljs-attr">name:</span> <span class="hljs-string">nginx</span>
+        <span class="hljs-attr">state:</span> <span class="hljs-string">started</span>
+</div></code></pre>
+<p>Vous trouverez les informations du hosts dans le fichier <a href="">host.ini</a></p>
+<h2 id="fichier-de-configuration-de-nginx">Fichier de configuration de NGINX</h2>
+<p>Pour permettre à <code>NGINX</code> de fonctionner, il lui faut renseigner un fichier de configuration. Il est possible d'avoir deux possibilités.
+Il est possible de créer autant de fichiers de configuration que d'applications web passant par Nginx.</p>
+<h3 id="fichier-de-configuration-%C3%A9coutant-sur-le-port-80">Fichier de configuration écoutant sur le port 80</h3>
+<p>Le fichier de configuration sera comme suit pour &lt;nom_application&gt;.conf :</p>
+<pre class="hljs"><code><div>server {
+    listen 80;
+    server_name &lt;exemple.fr&gt; &lt;www.exemple.fr&gt; &lt;foo.exemple.fr&gt; &lt;www.foo.exemple.fr&gt;;
+    location / {
+        proxy_read_timeout    90;
+        proxy_connect_timeout 90;
+        proxy_redirect        off;
+        proxy_pass http://&lt;adresse_ip_serveur_web&gt;:&lt;port&gt;;
+        proxy_set_header      X-Real-IP $remote_addr;
+        proxy_set_header      X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header      Host $host;
+    }
+}
+</div></code></pre>
+<p>Ce fichier est composé des arguments suivants :</p>
+<ul>
+<li><code>server_name</code> : Emplacement des domaines et sous domaines</li>
+<li><code>proxy_read_timeout</code> et <code>proxy_connect_timeout</code> : Définition du temps maximum que le serveur attendra pour une réponse du serveur cible (en secondes)</li>
+<li><code>proxy_redirect</code> : Définit si Nginx doit modifier les URL de redirection renvoyés par le serveur cible (ici <code>off</code>).</li>
+<li><code>proxy_pass</code> : Définit l'URL du serveur cible, qui sera utilisé pour traiter la requête.</li>
+<li><code>proxy_set_header</code> : En-têtes personnalisés pour la requête envoyée au serveur cible. Dans ce fichier, elles ajoutent l'adresse IP réelle du client, l'adresse IP du serveur proxy et le nom de domaine du serveur. Ces en-têtes seront utilisés pour les analyses de logs et la sécurité.</li>
+</ul>
+<p>Vous trouverez plus d'information dans la <a href="https://nginx.org/en/docs/">documentation officielle</a> de <code>NGINX</code>.</p>
+<h3 id="fichier-de-configuration-%C3%A9coutant-sur-le-port-443-pour-avoir-le-https">Fichier de configuration écoutant sur le port 443 pour avoir le <code>HTTPS</code></h3>
+<h4 id="certificat-ssl">Certificat SSL</h4>
+<p>Pour l'obtention du <code>HTTPS</code> sera utilisé certbot dans le but d'obtenir les certificats ssl.
+Pour l'utilisation de ce robot, il faut passer par son installation. Pour plus d'information, merci de suive la <a href="https://certbot.eff.org/">documentation officielle</a>.</p>
+<p>La commande suivante permet de l'implementer:</p>
+<pre class="hljs"><code><div>$ sudo certbot --nginx -d &lt;exemple.fr&gt; -d &lt;www.exemple.fr&gt; -d &lt;foo.exemple.fr&gt; -d &lt;www.foo.exemple.fr&gt;
+</div></code></pre>
+<p>Le fichier de configuration écoutant sur le port 80 sera automatiquement modifié.</p>
+<h4 id="fichier-de-configuration">Fichier de configuration</h4>
+<p>Après l'utilisation de ce robot, on obtiendra automatiquement le fichier suivant :</p>
+<pre class="hljs"><code><div>server {
+    server_name &lt;exemple.fr&gt; &lt;www.exemple.fr&gt; &lt;foo.exemple.fr&gt; &lt;www.foo.exemple.fr&gt;;
+
+    location / {
+        proxy_read_timeout    90;
+        proxy_connect_timeout 90;
+        proxy_redirect        off;
+        proxy_pass http://&lt;adresse_ip_serveur_web&gt;:3000;
+        proxy_set_header      X-Real-IP $remote_addr;
+        proxy_set_header      X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header      Host $host;
+    }
+
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/&lt;exemple.fr&gt;/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/&lt;exemple.fr&gt;/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+}
+
+server {
+    if ($host = &lt;exemple.fr&gt;) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+    if ($host = &lt;www.exemple.fr&gt;) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+    
+        if ($host = &lt;foo.exemple.fr&gt;) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+    
+    if ($host = &lt;www.foo.exemple.fr&gt;) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+    listen 80;
+    server_name &lt;exemple.fr&gt; &lt;www.exemple.fr&gt; &lt;foo.exemple.fr&gt; &lt;www.foo.exemple.fr&gt;;
+    return 404; # managed by Certbot
+}
+</div></code></pre>
+<p>Les fichiers de configuration devront être fait pour chaque application web (<code>wordpress</code>, <code>ghost</code>, <code>grafana</code>, <code>prometheus</code>, <code>gitea</code>, ...)</p>
+
+</body>
+</html>

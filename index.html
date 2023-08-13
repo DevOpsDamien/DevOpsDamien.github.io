@@ -1,75 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Full Width Pics - Start Bootstrap Template</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
-    <body>
-        <!-- Responsive navbar-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="#!">Start Bootstrap</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                    </ul>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Page</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+        .box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border: 2px solid #333;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            transform-origin: 150px;
+        }
+
+        .box img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .prometheus-box {
+            transform: translate(-50%, -50%) translateX(50px) translateY(50px);
+            z-index: 2;
+        }
+
+        .wordpress-box {
+            transform: rotate(0deg) translate(150px) rotate(0deg);
+        }
+
+        .mysql-box {
+            transform: rotate(90deg) translate(150px) rotate(-90deg);
+        }
+
+        .gitea-box {
+            transform: rotate(180deg) translate(150px) rotate(-180deg);
+        }
+
+        .grafana-box {
+            transform: rotate(270deg) translate(150px) rotate(-270deg);
+        }
+
+        .arrows {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+        .big-box {
+            position: absolute;
+            top: -140px;
+            left: 60%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 150px;
+            background-color: #98FB98;
+            border: 2px solid #333;
+            display: flex;
+        }
+
+        .subdivision {
+            flex: 1;
+            height: 100%;
+            border-left: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .subdivision:first-child {
+            border-left: none;
+        }
+        .subdivision:last-child {
+            border-right: none;
+        }
+
+        .nginx-left, .nginx-right {
+        position: absolute;
+        top: 10px; /* Ajustez ces valeurs selon vos besoins */
+        width: 40px; /* Taille de l'image, ajustez si nécessaire */
+        height: auto;
+        top: -10px;
+        }
+
+        .nginx-left {
+            left: -10px;
+        }
+
+        .nginx-right {
+            right: -10px;
+        }
+        .reverse-proxy-text {
+        position: absolute;
+        top: -20px; /* Ajustez cette valeur pour décaler le texte à la position souhaitée */
+        left: 50%; 
+        transform: translateX(-50%);
+        font-weight: bold;
+        background-color: #f0f0f0; /* Arrière-plan pour le rendre visible */
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-family: 'Courier New', Courier, monospace; /* Exemple de police originale, vous pouvez la remplacer par n'importe quelle autre police */
+        color: green; /* Pour rendre le texte vert */
+        font-weight: 700; 
+        }
+        .scrollable-content {
+            position: absolute;
+            left: 0;
+            top: 0; /* Si vous voulez que la boîte commence en haut de la page */
+            height: 33.33vh; 
+            width: 300px; /* Vous pouvez ajuster la largeur selon vos besoins */
+            overflow-y: auto; 
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="scrollable-content">
+        Votre long texte ici...
+        <!-- Assurez-vous que le texte est suffisamment long pour dépasser la hauteur définie -->
+    </div>
+    <div class="container">
+
+        <svg class="arrows" width="500" height="400">
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                refX="0" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+                </marker>
+            </defs>
+            <line x1="400" y1="255" x2="320" y2="255" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
+            <line x1="240" y1="100" x2="240" y2="180" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
+            <line x1="150" y1="255" x2="180" y2="255" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
+            <line x1="250" y1="350" x2="250" y2="320" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
+            <line x1="260" y1="200" x2="260" y2="170" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
+            <line x1="100" y1="200" x2="80" y2="32" stroke="#333" stroke-width="2" stroke-dasharray="5, 5" marker-end="url(#arrowhead)" />
+            <line x1="250" y1="80" x2="250" y2="32" stroke="#333" stroke-width="2" stroke-dasharray="5, 5" marker-end="url(#arrowhead)" />
+            <line x1="400" y1="200" x2="410" y2="32" stroke="#333" stroke-width="2" stroke-dasharray="5, 5" marker-end="url(#arrowhead)" />
+        </svg>
+
+        <a href="mds/prometheus.html" target="_blank">
+            <div class="box prometheus-box">
+                <img src="assets/prometheus-logo.png" alt="Prometheus Logo">
+            </div>
+        </a>
+        <a href="mds/wordpress.html" target="_blank">
+            <div class="box wordpress-box">
+                <img src="assets/wordpress-logo.png" alt="WordPress Logo">
+            </div>
+        </a>
+        <a href="mds/mysql.html" target="_blank">
+            <div class="box mysql-box">
+                <img src="assets/mysql-logo.png" alt="MySQL Logo">
+            </div>
+        </a>
+        <a href="mds/gitea.html" target="_blank">
+            <div class="box gitea-box">
+                <img src="assets/gitea-logo.png" alt="Gitea Logo">
+            </div>
+        </a>
+        <a href="mds/grafana.html" target="_blank">
+            <div class="box grafana-box">
+                <img src="assets/grafana-logo.png" alt="Grafana Logo">
+            </div>
+        </a>
+        <a href="mds/nginx.html" target="_blank">
+            <div class="big-box">
+                <div class="subdivision">
+                    <img src="assets/nginx-logo.png" alt="NGINX Logo" class="nginx-left">
+                    www.gitea.somily.fr
+                </div>
+                <div class="subdivision">
+                    <span class="reverse-proxy-text">Reverse-Proxy</span>
+                    www.grafana.somily.fr
+                </div>
+                <div class="subdivision">
+                    <img src="assets/nginx-logo.png" alt="NGINX Logo" class="nginx-right">
+                    www.wordpress.somily.fr
                 </div>
             </div>
-        </nav>
-        <!-- Header - set the background image for the header in the line below-->
-        <header class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1600x900')">
-            <div class="text-center my-5">
-                <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..." />
-                <h1 class="text-white fs-3 fw-bolder">Full Width Pics</h1>
-                <p class="text-white-50 mb-0">Landing Page Template</p>
-            </div>
-        </header>
-        <!-- Content section-->
-        <section class="py-5">
-            <div class="container my-5">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6">
-                        <h2>Full Width Backgrounds</h2>
-                        <p class="lead">A single, lightweight helper class allows you to add engaging, full width background images to sections of your page.</p>
-                        <p class="mb-0">The universe is almost 14 billion years old, and, wow! Life had no problem starting here on Earth! I think it would be inexcusably egocentric of us to suggest that we're alone in the universe.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Image element - set the background image for the header in the line below-->
-        <div class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/4ulffa6qoKA/1200x800')">
-            <!-- Put anything you want here! The spacer below with inline CSS is just for demo purposes!-->
-            <div style="height: 20rem"></div>
-        </div>
-        <!-- Content section-->
-        <section class="py-5">
-            <div class="container my-5">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6">
-                        <h2>Engaging Background Images</h2>
-                        <p class="lead">The background images used in this template are sourced from Unsplash and are open source and free to use.</p>
-                        <p class="mb-0">I can't tell you how many people say they were turned off from science because of a science teacher that completely sucked out all the inspiration and enthusiasm they had for the course.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
+        </a>
+    </div>
+</body>
+
 </html>
