@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -137,6 +137,22 @@
             padding: 10px;
             border: 1px solid #ccc;
         }
+        .docker-overlay {
+        position: absolute;
+        width: 30px; /* Vous pouvez ajuster la taille ici */
+        height: 30px;
+        bottom: -5px; /* Cela décale le logo Docker vers le bas */
+        right: -5px; /* Cela décale le logo Docker vers la droite */
+        border-radius: 50%; /* Pour s'assurer qu'il est circulaire */
+        overflow: hidden; /* Pour s'assurer que l'image ne dépasse pas du cercle */
+        z-index: 10;
+        }
+
+        .docker-overlay img {
+        width: 100%;
+        height: 80%;
+        display: block;
+        }
         
     </style>
 </head>
@@ -167,26 +183,41 @@
 
         <a href="mds/prometheus.html" target="_blank">
             <div class="box prometheus-box">
+                <div class="docker-overlay">
+                    <img src="assets/docker-logo.png" alt="Docker Logo">
+                </div>
                 <img src="assets/prometheus-logo.png" alt="Prometheus Logo">
             </div>
         </a>
         <a href="mds/wordpress.html" target="_blank">
             <div class="box wordpress-box">
+                <div class="docker-overlay">
+                    <img src="assets/docker-logo.png" alt="Docker Logo">
+                </div>
                 <img src="assets/wordpress-logo.png" alt="WordPress Logo">
             </div>
         </a>
         <a href="mds/mysql.html" target="_blank">
             <div class="box mysql-box">
+                <div class="docker-overlay">
+                    <img src="assets/docker-logo.png" alt="Docker Logo">
+                </div>
                 <img src="assets/mysql-logo.png" alt="MySQL Logo">
             </div>
         </a>
         <a href="mds/gitea.html" target="_blank">
             <div class="box gitea-box">
+                <div class="docker-overlay">
+                    <img src="assets/docker-logo.png" alt="Docker Logo">
+                </div>
                 <img src="assets/gitea-logo.png" alt="Gitea Logo">
             </div>
         </a>
         <a href="mds/grafana.html" target="_blank">
             <div class="box grafana-box">
+                <div class="docker-overlay">
+                    <img src="assets/docker-logo.png" alt="Docker Logo">
+                </div>
                 <img src="assets/grafana-logo.png" alt="Grafana Logo">
             </div>
         </a>
@@ -208,5 +239,3 @@
         </a>
     </div>
 </body>
-
-</html>
