@@ -24,6 +24,10 @@
             width: 400px;
             height: 400px;
         }
+        .box, .big-box {
+        transition: transform 0.3s ease; /* Ajoute une transition pour adoucir l'effet */
+        }
+
         .box {
             position: absolute;
             top: 50%;
@@ -48,21 +52,36 @@
             transform: translate(-50%, -50%) translateX(50px) translateY(50px);
             z-index: 2;
         }
+        .prometheus-box:hover {
+        transform: scale(1.05) translate(-50%, -50%) translateX(50px) translateY(50px);
+        }
 
         .wordpress-box {
             transform: rotate(0deg) translate(150px) rotate(0deg);
+        }
+        .wordpress-box:hover {
+        transform: scale(1.05) rotate(0deg) translate(150px) rotate(0deg);
         }
 
         .mysql-box {
             transform: rotate(90deg) translate(150px) rotate(-90deg);
         }
+        .mysql-box:hover {
+        transform: scale(1.05) rotate(90deg) translate(150px) rotate(-90deg);
+        }
 
         .gitea-box {
             transform: rotate(180deg) translate(150px) rotate(-180deg);
         }
+        .gitea-box:hover {
+        transform: scale(1.05) rotate(180deg) translate(150px) rotate(-180deg);
+        }
 
         .grafana-box {
             transform: rotate(270deg) translate(150px) rotate(-270deg);
+        }
+        .grafana-box:hover {
+        transform: scale(1.05) rotate(270deg) translate(150px) rotate(-270deg);
         }
 
         .arrows {
@@ -81,6 +100,9 @@
             background-color: #98FB98;
             border: 2px solid #333;
             display: flex;
+        }
+        .big-box:hover {
+        transform: scale(1.05) translateX(-50%);
         }
 
         .subdivision {
@@ -187,8 +209,8 @@
                     <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
                 </marker>
             </defs>
-            <line x1="400" y1="255" x2="320" y2="255" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
-            <line x1="240" y1="100" x2="240" y2="180" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
+            <line x1="348" y1="255" x2="320" y2="255" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
+            <line x1="240" y1="155" x2="240" y2="180" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
             <line x1="150" y1="255" x2="180" y2="255" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
             <line x1="250" y1="350" x2="250" y2="320" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
             <line x1="260" y1="200" x2="260" y2="170" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)" />
