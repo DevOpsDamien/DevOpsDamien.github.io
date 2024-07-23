@@ -5,70 +5,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Damien's DevOps Projects</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
         html, body {
             height: 100%;
-        }
-
-        body {
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            font-family: 'Roboto', sans-serif;
             background-color: #f0f0f0;
+            color: #333;
         }
 
         .header {
             width: 100%;
-            background-color: #333;
+            background-color: #4CAF50;
             color: #fff;
-            padding: 1em;
+            padding: 2em 0;
             text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            letter-spacing: 1px;
         }
 
         .main {
             padding: 20px;
+            max-width: 1200px;
+            margin: auto;
             text-align: center;
         }
 
         .projects {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             justify-content: center;
         }
 
         .project {
             background-color: #fff;
-            border: 2px solid #333;
-            width: 200px;
+            border: 2px solid #4CAF50;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .project h2 {
             margin-top: 0;
+            color: #4CAF50;
+        }
+
+        .project p {
+            font-size: 1em;
+            color: #666;
+        }
+
+        .project img {
+            max-width: 100%;
+            border-radius: 10px;
         }
 
         .project a {
-            display: block;
+            display: inline-block;
             margin-top: 10px;
-            padding: 10px;
-            background-color: #333;
+            padding: 10px 15px;
+            background-color: #4CAF50;
             color: #fff;
             text-decoration: none;
             border-radius: 5px;
+            transition: background-color 0.3s;
         }
 
         .project a:hover {
-            background-color: #555;
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
     <div class="header">
+        <h1>Hands-on Labs & DevOps Projects</h1>
+    </div>
+    <div class="main">
+        <div class="projects">
+            <div class="project">
+                <h2>Projet POEI</h2>
+                <img src="assets/project1-thumbnail.jpg" alt="Project 1 Thumbnail">
+                <p><em>Linux server, Docker, Ansible<em></p>
+                <p>Avril 2023</em></p>
+                <a href="ProjetPOEI.html">View Project</a>
+            </div>
+            <div class="project">
+                <h2>Project 2</h2>
+                <img src="assets/project2-thumbnail.jpg" alt="Project 2 Thumbnail">
+                <p><em>Short description of Project 2.</em></p>
+                <a href="page2.html">View Project</a>
+            </div>
+            <!-- Add more projects as needed -->
+        </div>
+    </div>
+</body>
+</html>
+
         <h1>My Hands-on Labs & DevOps Projects</h1>
     </div>
     <div class="main">
@@ -89,5 +134,4 @@
     </div>
 </body>
 </html>
-
 
