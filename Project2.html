@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet CLOUD</title>
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            position: relative;
+            width: 800px;
+            height: 400px;
+            background-image: url('image.png'); /* Chemin de l'image */
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .clickable {
+            position: absolute;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .clickable:hover {
+            border-color: #333;
+        }
+
+        .circle-left {
+            top: 30%;
+            left: 5%;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        .square-ec2-jenkins {
+            top: 30%;
+            left: 35%;
+            width: 100px;
+            height: 100px;
+        }
+
+        .node-eks {
+            top: 30%;
+            right: 5%;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="circle-left.html" target="_blank">
+            <div class="clickable circle-left"></div>
+        </a>
+        <a href="ec2-jenkins.html" target="_blank">
+            <div class="clickable square-ec2-jenkins"></div>
+        </a>
+        <a href="node-eks.html" target="_blank">
+            <div class="clickable node-eks"></div>
+        </a>
+    </div>
+</body>
+</html>
