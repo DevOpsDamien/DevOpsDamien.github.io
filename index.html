@@ -51,6 +51,18 @@
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            max-width: 400px; /* Set a max-width to limit the size */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 500px; /* Set a fixed height */
+        }
+
+        .project img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Ensure the image scales proportionally */
+            margin: auto; /* Center the image within the container */
         }
 
         .project:hover {
@@ -66,11 +78,6 @@
         .project p {
             font-size: 1em;
             color: #666;
-        }
-
-        .project img {
-            max-width: 100%;
-            border-radius: 10px;
         }
 
         .project a {
@@ -96,17 +103,16 @@
     <div class="main">
         <div class="projects">
             <div class="project">
-                <h2>Projet POEI</h2>
+                <h2>Project POEI</h2>
                 <img src="assets/project1-thumbnail.jpg.png" alt="Project 1 Thumbnail">
                 <p><em>Linux server, Docker, Ansible</em></p>
-                <p>Avril 2023</p>
+                <p><em>Avril 2023</em></p>
                 <a href="ProjetPOEI.html">View Project</a>
             </div>
             <div class="project">
-                <h2>Projet Cloud</h2>
+                <h2>Project CLOUD</h2>
                 <img src="assets/project2-thumbnail.jpg.png" alt="Project 2 Thumbnail">
-                <p><em>Terraform, AWS, EKS, Jenkins </em></p>
-                <p>Mars 2024</p>
+                <p><em>Terraform, AWS, EKS, Jenkins</em></p>
                 <a href="page2.html">View Project</a>
             </div>
             <!-- Add more projects as needed -->
