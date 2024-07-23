@@ -33,30 +33,34 @@
 
         .title {
             position: absolute;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 5px;
-            border-radius: 3px;
             font-weight: bold;
+            background: none;
+            border: none;
+            padding: 5px;
         }
 
-        .title1 {
-            top: 10%;
-            left: 35%;
-        }
-
-        .title2 {
-            top: 80%;
+        .title-1 {
+            top: 15%;
             left: 25%;
         }
 
-        .title3 {
-            top: 45%;
-            left: 52%;
+        .title-2 {
+            top: 80%;
+            left: 20%;
         }
 
-        .title4 {
+        .title-3 {
+            top: 60%;
+            left: 55%;
+            width: 150px;
+            text-align: center;
+        }
+
+        .title-4 {
             top: 80%;
-            right: 10%;
+            left: 80%;
+            width: 150px;
+            text-align: center;
         }
 
         .content {
@@ -68,20 +72,20 @@
             border-radius: 5px;
         }
 
-        .content img {
-            width: 80%; /* Reducing the width of the last image */
-            height: auto;
+        .image {
+            text-align: center;
         }
+
     </style>
 </head>
 
 <body>
     <div class="container">
         <img src="assets/Project2.png" alt="Project Diagram">
-        <div class="title title1">Create an EC2 instance + deploy Jenkins with Terraform</div>
-        <div class="title title2">Write tf code for EKS cluster and push the code on Github using GIT</div>
-        <div class="title title3">Create a jenkins pipeline to deploy EKS cluster using github repo</div>
-        <div class="title title4">Add a proxy and Access it through ELB (with deployment and kubectl)</div>
+        <div class="title title-1">1. Create an EC2 instance + deploy Jenkins with Terraform</div>
+        <div class="title title-2">2. Write tf code for EKS cluster and push the code on Github using GIT</div>
+        <div class="title title-3">3. Create a jenkins pipeline to deploy EKS cluster using github repo</div>
+        <div class="title title-4">4. Add a proxy and Access it through ELB (with deployment and kubectl)</div>
     </div>
 
     <div id="para1" class="content">
