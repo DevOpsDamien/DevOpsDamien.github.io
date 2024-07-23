@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet CLOUD</title>
+    <title>Cloud Project</title>
     <style>
         html, body {
             height: 100%;
@@ -91,69 +91,57 @@
     <div id="para1" class="content">
         <h2>Create an EC2 instance + deploy Jenkins with Terraform</h2>
         <p>
-            <strong>main.tf :</strong><br>
-            Ce fichier principal de Terraform définit les ressources nécessaires pour créer une instance EC2 sur AWS et y déployer Jenkins. Il inclut les configurations pour la sécurité, le réseau, et les spécifications de l'instance.
+            <strong>main.tf:</strong><br>
+            This main Terraform file defines the resources needed to create an EC2 instance on AWS and deploy Jenkins on it. It includes configurations for security, networking, and instance specifications.
         </p>
         <p>
-            <strong>variables.tf :</strong><br>
-            Ce fichier contient toutes les variables nécessaires à la configuration du déploiement, telles que les identifiants AWS, les informations sur le réseau, et les paramètres de Jenkins. Il permet de rendre le script plus modulaire et réutilisable.
+            <strong>security_groups (main.tf):</strong><br>
+            This file configures the AWS security groups for the EC2 instance, defining the firewall rules necessary to allow access to Jenkins and other associated services.
         </p>
         <p>
-            <strong>outputs.tf :</strong><br>
-            Ce fichier définit les sorties de Terraform, telles que les adresses IP ou les URL nécessaires pour accéder à Jenkins une fois déployé. Ces sorties sont utiles pour obtenir rapidement les informations de connexion après le déploiement.
+            <strong>ec2_instance (main.tf):</strong><br>
+            This specific file configures the detailed parameters of the EC2 instance, including instance type, storage volume, and tags for resource organization.
         </p>
         <p>
-            <strong>security_groups.tf :</strong><br>
-            Ce fichier configure les groupes de sécurité AWS pour l'instance EC2, en définissant les règles de pare-feu nécessaires pour permettre l'accès à Jenkins et autres services associés.
+            <strong>jenkins_install.sh:</strong><br>
+            A shell script to automate the installation of Jenkins on the EC2 instance. It downloads Jenkins, configures the initial settings, and ensures the service starts correctly.
         </p>
         <p>
-            <strong>ec2_instance.tf :</strong><br>
-            Ce fichier spécifique configure les paramètres détaillés de l'instance EC2, y compris le type d'instance, le volume de stockage, et les balises pour l'organisation des ressources.
+            <strong>variables.tf:</strong><br>
+            This file contains all the necessary variables for the deployment configuration, such as AWS credentials, network information, and Jenkins parameters. It makes the script more modular and reusable.
         </p>
         <p>
-            <strong>jenkins_install.sh :</strong><br>
-            Un script shell pour automatiser l'installation de Jenkins sur l'instance EC2. Il télécharge Jenkins, configure les paramètres initiaux, et assure que le service est démarré correctement.
-        </p>
-        <p>
-            Ces fichiers, lorsqu'ils sont utilisés ensemble, permettent de déployer rapidement et de manière fiable une instance Jenkins sur AWS en utilisant Terraform pour l'infrastructure et des scripts shell pour la configuration initiale de Jenkins. <a href="https://github.com/DevOpsDamien/Terraform-Jenkins-EKS/tree/a4ddd5ebfbb711d1669bf20a90c8c4ce0a809ee0/Jenkins%20Server" target="_blank">Lien GitHub</a>
+            These files, when used together, allow for quick and reliable deployment of a Jenkins instance on AWS using Terraform for infrastructure and shell scripts for the initial Jenkins configuration. <a href="https://github.com/DevOpsDamien/Terraform-Jenkins-EKS/tree/a4ddd5ebfbb711d1669bf20a90c8c4ce0a809ee0/Jenkins%20Server" target="_blank">GitHub Link</a>
         </p>
     </div>
 
     <div id="para2" class="content">
         <h2>Write Terraform files for EKS and deploy Jenkins pipeline</h2>
         <p>
-            <strong>main.tf :</strong><br>
-            Ce fichier principal de Terraform configure toutes les ressources nécessaires pour mettre en place un cluster EKS sur AWS. Il orchestre la création du cluster EKS, des groupes de nœuds et des ressources associées.
+            <strong>main.tf:</strong><br>
+            This main Terraform file configures all the resources needed to set up an EKS cluster on AWS. It orchestrates the creation of the EKS cluster, node groups, and associated resources.
         </p>
         <p>
-            <strong>variables.tf :</strong><br>
-            Ce fichier contient les définitions de variables utilisées dans les configurations Terraform. Des variables telles que la région AWS, le nom du cluster et les types d'instances sont définies ici, rendant la configuration plus flexible et réutilisable.
+            <strong>security_groups (main.tf):</strong><br>
+            This file manages the security groups for the EKS cluster. It includes rules to control incoming and outgoing traffic to and from the Kubernetes nodes and control plane.
         </p>
         <p>
-            <strong>outputs.tf :</strong><br>
-            Ce fichier définit les sorties du déploiement Terraform. Il inclut généralement des informations essentielles comme l'endpoint du cluster EKS et la configuration Kubernetes nécessaire pour interagir avec le cluster.
+            <strong>eks_cluster (main.tf):</strong><br>
+            This specific configuration file includes details for creating the EKS cluster, specifying parameters like the Kubernetes version, VPC configuration, and role-based access controls for the cluster.
         </p>
         <p>
-            <strong>security_groups.tf :</strong><br>
-            Ce fichier gère les groupes de sécurité pour le cluster EKS. Il inclut les règles pour contrôler le trafic entrant et sortant vers et depuis les nœuds Kubernetes et le plan de contrôle.
+            <strong>node_groups.tf:</strong><br>
+            This file defines the node groups for the EKS cluster. It includes details on instance types, scaling policies, and bootstrap configurations needed for the nodes to join the cluster.
         </p>
         <p>
-            <strong>eks_cluster.tf :</strong><br>
-            Ce fichier de configuration spécifique inclut les détails pour créer le cluster EKS, en spécifiant des paramètres comme la version de Kubernetes, la configuration du VPC et les contrôles d'accès basés sur les rôles pour le cluster.
+            <strong>variables.tf:</strong><br>
+            This file contains the variable definitions used in Terraform configurations. Variables such as AWS region, cluster name, and instance types are defined here, making the configuration more flexible and reusable.
         </p>
         <p>
-            <strong>node_groups.tf :</strong><br>
-            Ce fichier définit les groupes de nœuds pour le cluster EKS. Il inclut des détails sur les types d'instances, les politiques de mise à l'échelle et les configurations de bootstrap nécessaires pour que les nœuds rejoignent le cluster.
+            These files, when used together, facilitate the deployment and management of an EKS cluster on AWS using Terraform, ensuring a scalable and automated infrastructure. <a href="https://github.com/DevOpsDamien/Terraform-Jenkins-EKS/tree/a4ddd5ebfbb711d1669bf20a90c8c4ce0a809ee0/EKS" target="_blank">GitHub Link</a>
         </p>
         <p>
-            <strong>kubernetes.tf :</strong><br>
-            Ce fichier configure le provider Kubernetes dans Terraform, permettant le déploiement et la gestion des ressources Kubernetes au sein du cluster EKS. Il inclut souvent les configurations de déploiements et de services.
-        </p>
-        <p>
-            Ces fichiers, lorsqu'ils sont utilisés ensemble, facilitent le déploiement et la gestion d'un cluster EKS sur AWS en utilisant Terraform, garantissant une infrastructure évolutive et automatisée. <a href="https://github.com/DevOpsDamien/Terraform-Jenkins-EKS/tree/a4ddd5ebfbb711d1669bf20a90c8c4ce0a809ee0/EKS" target="_blank">Lien GitHub</a>
-        </p>
-        <p>
-            Afterall, the Jenkins pipeline script ( <a href="https://github.com/DevOpsDamien/Terraform-Jenkins-EKS/blob/main/Jenkinsfile" target="_blank">Script</a>) automates the deployment of an <strong>EKS cluster</strong> on <strong>AWS</strong> using <strong>Terraform</strong>. It includes stages for:
+            After all, the Jenkins pipeline script (<a href="https://github.com/DevOpsDamien/Terraform-Jenkins-EKS/blob/main/Jenkinsfile" target="_blank">Script</a>) automates the deployment of an <strong>EKS cluster</strong> on <strong>AWS</strong> using <strong>Terraform</strong>. It includes stages for:
         </p>
         <ul>
             <li>checking out the source code,</li>
@@ -170,10 +158,12 @@
         </div>
     </div>
 
-
     <div id="para3" class="content">
         <h2>Deploy Nginx on AWS and access it with ELB</h2>
-        <p>Ceci est le contenu du troisième paragraphe. Il contient des informations détaillées sur la troisième zone cliquable.<a href="https://github.com/DevOpsDamien/Terraform-Jenkins-EKS/tree/a4ddd5ebfbb711d1669bf20a90c8c4ce0a809ee0/Nginx" target="_blank">Accéder au dossier privé</a></p>
+        <p>The last stage of the pipeline is deploying an nginx application in the cluster. We can try to reach it out from the AWS ELB link and see if it's work:</p>
+        <div class="image">
+            <img src="assets/Nginx.png" alt="Stage View">
+        </div>
     </div>
 </body>
 </html>
