@@ -23,11 +23,12 @@
             position: relative;
             width: 1265px; /* Original image width */
             height: 583px; /* Original image height */
-            background-image: url('assets/Project2.png'); /* Path to the image */
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
             margin-bottom: 50px;
+        }
+
+        .container img {
+            width: 100%;
+            height: auto;
         }
 
         .clickable {
@@ -75,6 +76,7 @@
 
 <body>
     <div class="container">
+        <img src="assets/Project2.png" alt="Project Diagram">
         <a href="#para1">
             <div class="clickable circle-left"></div>
         </a>
