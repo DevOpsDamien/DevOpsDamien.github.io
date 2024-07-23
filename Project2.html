@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Project</title>
+    <title>Projet CLOUD</title>
     <style>
         html, body {
             height: 100%;
@@ -31,36 +31,32 @@
             height: auto;
         }
 
-        .clickable {
+        .title {
             position: absolute;
-            border: 2px solid transparent;
-            transition: border-color 0.3s;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px;
+            border-radius: 3px;
+            font-weight: bold;
         }
 
-        .clickable:hover {
-            border-color: #333;
+        .title1 {
+            top: 10%;
+            left: 35%;
         }
 
-        .circle-left {
-            top: 20%;
-            left: 10%;
-            width: 10%;
-            height: 20%;
-            border-radius: 50%;
+        .title2 {
+            top: 80%;
+            left: 25%;
         }
 
-        .square-ec2-jenkins {
-            top: 32%;
-            left: 37%;
-            width: 12%;
-            height: 18%;
+        .title3 {
+            top: 45%;
+            left: 52%;
         }
 
-        .node-eks {
-            top: 30%;
+        .title4 {
+            top: 80%;
             right: 10%;
-            width: 10%;
-            height: 25%;
         }
 
         .content {
@@ -71,21 +67,21 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+
+        .content img {
+            width: 80%; /* Reducing the width of the last image */
+            height: auto;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <img src="assets/Project2.png" alt="Project Diagram">
-        <a href="#para1">
-            <div class="clickable circle-left"></div>
-        </a>
-        <a href="#para2">
-            <div class="clickable square-ec2-jenkins"></div>
-        </a>
-        <a href="#para3">
-            <div class="clickable node-eks"></div>
-        </a>
+        <div class="title title1">Create an EC2 instance + deploy Jenkins with Terraform</div>
+        <div class="title title2">Write tf code for EKS cluster and push the code on Github using GIT</div>
+        <div class="title title3">Create a jenkins pipeline to deploy EKS cluster using github repo</div>
+        <div class="title title4">Add a proxy and Access it through ELB (with deployment and kubectl)</div>
     </div>
 
     <div id="para1" class="content">
