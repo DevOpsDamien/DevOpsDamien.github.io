@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +7,11 @@
     <style>
         html, body {
             height: 100%;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -21,11 +20,12 @@
 
         .container {
             position: relative;
-            width: 800px;
-            height: 400px;
-            background-image: url('*/assets/Project2.png'); /* Chemin de l'image */
+            width: 1000px; /* Ajustez la taille si nécessaire */
+            height: 500px; /* Ajustez la taille si nécessaire */
+            background-image: url('assets/Project2.png'); /* Chemin de l'image */
             background-size: contain;
             background-repeat: no-repeat;
+            background-position: center;
         }
 
         .clickable {
@@ -39,25 +39,25 @@
         }
 
         .circle-left {
-            top: 30%;
-            left: 5%;
-            width: 100px;
-            height: 100px;
+            top: 20%;
+            left: 10%;
+            width: 15%;
+            height: 25%;
             border-radius: 50%;
         }
 
         .square-ec2-jenkins {
             top: 30%;
-            left: 35%;
-            width: 100px;
-            height: 100px;
+            left: 40%;
+            width: 20%;
+            height: 25%;
         }
 
         .node-eks {
             top: 30%;
-            right: 5%;
-            width: 100px;
-            height: 100px;
+            right: 10%;
+            width: 15%;
+            height: 25%;
         }
     </style>
 </head>
