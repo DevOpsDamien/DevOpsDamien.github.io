@@ -16,6 +16,7 @@
             justify-content: center;
             align-items: center;
             background-color: #f0f0f0;
+            flex-direction: column;
         }
 
         .container {
@@ -59,22 +60,47 @@
             width: 10%;
             height: 25%;
         }
+
+        .content {
+            width: 80%;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <a href="circle-left.html" target="_blank">
+        <a href="#para1">
             <div class="clickable circle-left"></div>
         </a>
-        <a href="ec2-jenkins.html" target="_blank">
+        <a href="#para2">
             <div class="clickable square-ec2-jenkins"></div>
         </a>
-        <a href="node-eks.html" target="_blank">
+        <a href="#para3">
             <div class="clickable node-eks"></div>
         </a>
     </div>
+
+    <div id="para1" class="content">
+        <h2>Create an EC2 instance + deploy Jenkins with Terraform</h2>
+        <p>Ceci est le contenu du premier paragraphe. Il contient des informations détaillées sur la première zone cliquable.</p>
+    </div>
+
+    <div id="para2" class="content">
+        <h2>Write Terraform files for EKS and deploy Jenkins pipeline</h2>
+        <p>Ceci est le contenu du deuxième paragraphe. Il contient des informations détaillées sur la deuxième zone cliquable.</p>
+    </div>
+
+    <div id="para3" class="content">
+        <h2>Deploy Nginx on AWS and access it with ELB</h2>
+        <p>Ceci est le contenu du troisième paragraphe. Il contient des informations détaillées sur la troisième zone cliquable.</p>
+    </div>
 </body>
 </html>
+
 
 
