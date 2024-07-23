@@ -88,7 +88,33 @@
 
     <div id="para1" class="content">
         <h2>Create an EC2 instance + deploy Jenkins with Terraform</h2>
-        <p>Ceci est le contenu du premier paragraphe. Il contient des informations détaillées sur la première zone cliquable.<a href="https://github.com/DevOpsDamien/Terraform-Jenkins-EKS/tree/a4ddd5ebfbb711d1669bf20a90c8c4ce0a809ee0/Jenkins%20Server" target="_blank">Accéder au dossier privé</a></p>
+        <p>
+            <strong>main.tf :</strong><br>
+            Ce fichier principal de Terraform définit les ressources nécessaires pour créer une instance EC2 sur AWS et y déployer Jenkins. Il inclut les configurations pour la sécurité, le réseau, et les spécifications de l'instance.
+        </p>
+        <p>
+            <strong>variables.tf :</strong><br>
+            Ce fichier contient toutes les variables nécessaires à la configuration du déploiement, telles que les identifiants AWS, les informations sur le réseau, et les paramètres de Jenkins. Il permet de rendre le script plus modulaire et réutilisable.
+        </p>
+        <p>
+            <strong>outputs.tf :</strong><br>
+            Ce fichier définit les sorties de Terraform, telles que les adresses IP ou les URL nécessaires pour accéder à Jenkins une fois déployé. Ces sorties sont utiles pour obtenir rapidement les informations de connexion après le déploiement.
+        </p>
+        <p>
+            <strong>security_groups.tf :</strong><br>
+            Ce fichier configure les groupes de sécurité AWS pour l'instance EC2, en définissant les règles de pare-feu nécessaires pour permettre l'accès à Jenkins et autres services associés.
+        </p>
+        <p>
+            <strong>ec2_instance.tf :</strong><br>
+            Ce fichier spécifique configure les paramètres détaillés de l'instance EC2, y compris le type d'instance, le volume de stockage, et les balises pour l'organisation des ressources.
+        </p>
+        <p>
+            <strong>jenkins_install.sh :</strong><br>
+            Un script shell pour automatiser l'installation de Jenkins sur l'instance EC2. Il télécharge Jenkins, configure les paramètres initiaux, et assure que le service est démarré correctement.
+        </p>
+        <p>
+            Ces fichiers, lorsqu'ils sont utilisés ensemble, permettent de déployer rapidement et de manière fiable une instance Jenkins sur AWS en utilisant Terraform pour l'infrastructure et des scripts shell pour la configuration initiale de Jenkins. <a href="https://github.com/DevOpsDamien/Terraform-Jenkins-EKS/tree/a4ddd5ebfbb711d1669bf20a90c8c4ce0a809ee0/Jenkins%20Server" target="_blank">Accéder au dossier privé</a>
+        </p>
     </div>
 
     <div id="para2" class="content">
