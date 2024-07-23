@@ -23,7 +23,7 @@
             position: relative;
             width: 1265px; /* Original image width */
             height: 583px; /* Original image height */
-            background-image: url('assets/Project2.png'); /* Chemin de l'image */
+            background-image: url('assets/Project2.png'); /* Path to the image */
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -119,7 +119,37 @@
 
     <div id="para2" class="content">
         <h2>Write Terraform files for EKS and deploy Jenkins pipeline</h2>
-        <p>Ceci est le contenu du deuxième paragraphe. Il contient des informations détaillées sur la deuxième zone cliquable.<a href="https://github.com/DevOpsDamien/Terraform-Jenkins-EKS/tree/a4ddd5ebfbb711d1669bf20a90c8c4ce0a809ee0/EKS" target="_blank">Accéder au dossier privé</a></p>
+        <p>
+            <strong>main.tf :</strong><br>
+            Ce fichier principal de Terraform configure toutes les ressources nécessaires pour mettre en place un cluster EKS sur AWS. Il orchestre la création du cluster EKS, des groupes de nœuds et des ressources associées.
+        </p>
+        <p>
+            <strong>variables.tf :</strong><br>
+            Ce fichier contient les définitions de variables utilisées dans les configurations Terraform. Des variables telles que la région AWS, le nom du cluster et les types d'instances sont définies ici, rendant la configuration plus flexible et réutilisable.
+        </p>
+        <p>
+            <strong>outputs.tf :</strong><br>
+            Ce fichier définit les sorties du déploiement Terraform. Il inclut généralement des informations essentielles comme l'endpoint du cluster EKS et la configuration Kubernetes nécessaire pour interagir avec le cluster.
+        </p>
+        <p>
+            <strong>security_groups.tf :</strong><br>
+            Ce fichier gère les groupes de sécurité pour le cluster EKS. Il inclut les règles pour contrôler le trafic entrant et sortant vers et depuis les nœuds Kubernetes et le plan de contrôle.
+        </p>
+        <p>
+            <strong>eks_cluster.tf :</strong><br>
+            Ce fichier de configuration spécifique inclut les détails pour créer le cluster EKS, en spécifiant des paramètres comme la version de Kubernetes, la configuration du VPC et les contrôles d'accès basés sur les rôles pour le cluster.
+        </p>
+        <p>
+            <strong>node_groups.tf :</strong><br>
+            Ce fichier définit les groupes de nœuds pour le cluster EKS. Il inclut des détails sur les types d'instances, les politiques de mise à l'échelle et les configurations de bootstrap nécessaires pour que les nœuds rejoignent le cluster.
+        </p>
+        <p>
+            <strong>kubernetes.tf :</strong><br>
+            Ce fichier configure le provider Kubernetes dans Terraform, permettant le déploiement et la gestion des ressources Kubernetes au sein du cluster EKS. Il inclut souvent les configurations de déploiements et de services.
+        </p>
+        <p>
+            Ces fichiers, lorsqu'ils sont utilisés ensemble, facilitent le déploiement et la gestion d'un cluster EKS sur AWS en utilisant Terraform, garantissant une infrastructure évolutive et automatisée. <a href="https://github.com/DevOpsDamien/Terraform-Jenkins-EKS/tree/a4ddd5ebfbb711d1669bf20a90c8c4ce0a809ee0/EKS" target="_blank">Accéder au dossier privé</a>
+        </p>
     </div>
 
     <div id="para3" class="content">
@@ -128,5 +158,3 @@
     </div>
 </body>
 </html>
-
-
