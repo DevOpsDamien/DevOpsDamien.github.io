@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Déploiement OpenTelemetry sur AWS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f3f4f6;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: #1f2937;
+            line-height: 1.5;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            opacity: 1 !important;
+        }
+
+        /* Typographie */
+        h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            color: #4b5563;
+            margin-bottom: 1rem;
+        }
+
+        /* Listes - Correction des styles */
+        ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            color: #4b5563;
+            margin-bottom: 0.5rem;
+            display: list-item;
+            padding-left: 0.5rem;
+        }
+
+        /* Sections */
+        section {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        header p {
+            font-size: 1.25rem;
+            color: #6b7280;
+        }
+
+        /* Grilles */
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Images */
+        img {
+            width: 100%;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .img-caption {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+
+        /* Info box styles */
+        .info-box {
+            background-color: #f8fafc;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Barre de progression */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(to right, #4F46E5, #9333EA);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-animate {
+            opacity: 1;
+            transition: all 0.6s ease-out;
+        }
+
+        .img-animate {
+            opacity: 1;
+            transition: all 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Déploiement OpenTelemetry sur AWS</h1>
+            <p>Monitoring et Observabilité d'une Application Microservices</p>
+        </header>
+
+        <section class="section-animate">
+            <h2>1. Architecture et Déploiement</h2>
+            <div class="info-box">
+                <p>L'application est déployée sur une instance EC2 Ubuntu et comprend plusieurs microservices orchestrés via Docker Compose :</p>
+                <ul>
+                    <li>Services de monitoring : Prometheus, Grafana, Jaeger</li>
+                    <li>Collecteur OpenTelemetry pour l'agrégation des métriques</li>
+                    <li>Services métier : Frontend, Backend APIs, Services de paiement, etc.</li>
+                </ul>
+            </div>
+            <div>
+                <img src="assets/images/docker_compose.png" alt="Docker Compose Services" class="img-animate"/>
+                <p class="img-caption">Liste des conteneurs déployés via Docker Compose</p>
+            </div>
+        </section>
+
+        <section class="section-animate">
+            <h2>2. Tests de Charge et Simulation d'Erreurs</h2>
+            <div class="grid grid-2">
+                <div>
+                    <h3>Test de Charge CPU</h3>
+                    <img src="assets/images/loads_error.png" alt="CPU Load Test" class="img-animate"/>
+                    <p class="img-caption">Simulation de charge CPU élevée</p>
+                </div>
+                <div>
+                    <h3>Erreurs de Checkout</h3>
+                    <img src="assets/images/checkout_error.png" alt="Checkout Errors" class="img-animate"/>
+                    <p class="img-caption">Simulation d'erreurs dans le processus de checkout</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-animate">
+            <h2>3. Observabilité Multi-Niveaux</h2>
+            <div>
+                <h3>Visualisation Grafana</h3>
+                <p>Tableaux de bord personnalisés montrant :</p>
+                <ul>
+                    <li>Métriques de performance (latence, débit)</li>
+                    <li>Taux d'erreurs par service</li>
+                    <li>Utilisation des ressources</li>
+                </ul>
+                <div class="grid grid-2">
+                    <img src="assets/images/grafana.png" alt="Grafana Dashboard CPU" class="img-animate"/>
+                    <img src="assets/images/grafana_checkout.png" alt="Grafana Dashboard Checkout" class="img-animate"/>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <h3>Traçage avec Jaeger</h3>
+                    <p>Analyse détaillée des traces distribuées :</p>
+                    <ul>
+                        <li>Visualisation des dépendances entre services</li>
+                        <li>Identification des goulots d'étranglement</li>
+                        <li>Analyse des erreurs en cascade</li>
+                    </ul>
+                    <img src="assets/images/jaeger_checkout.png" alt="Jaeger Tracing" class="img-animate"/>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-animate">
+            <h2>4. Résultats et Conclusions</h2>
+            <p>L'implémentation d'OpenTelemetry a permis :</p>
+            <ul>
+                <li>Une visibilité complète sur les performances de l'application</li>
+                <li>La détection rapide des problèmes et erreurs</li>
+                <li>L'analyse approfondie des interactions entre services</li>
+                <li>Une amélioration de la maintenance et du debugging</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        // Initialisation de GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animation de la barre de progression
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.querySelector('.progress-bar').style.width = scrolled + '%';
+        });
+
+        // Animation des sections au scroll
+        document.querySelectorAll('.section-animate').forEach(section => {
+            gsap.from(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1
+            });
+        });
+
+        // Animation des images
+        document.querySelectorAll('.img-animate').forEach(img => {
+            gsap.from(img, {
+                scrollTrigger: {
+                    trigger: img,
+                    start: "top 90%",
+                    toggleActions: "play none none reverse"
+                },
+                scale: 0.9,
+                opacity: 0,
+                duration: 0.8
+            });
+        });
+    </script>
+</body>
+</html>
